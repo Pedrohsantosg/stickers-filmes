@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // fazer uma conexão HTTP e buscar os top 250 filmes
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
         URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco).GET().build();
@@ -22,12 +22,19 @@ public class App {
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
         // exibir e manipular os dados
-        for (Map<String, String> filme : listaDeFilmes) {
-            System.out.println(filme.get("title"));
-            System.out.println(filme.get("image"));
+        for (int i = 0; i < 3; i++) {
+            Map<String, String> filme = listaDeFilmes.get(i);
+            System.out.println("\u001b[1mTítulo:\u001b[m " + filme.get("title"));
+            System.out.println("\u001b[1mUrl da imagem:\u001b[m" + filme.get("image"));
             System.out.println(filme.get("imDbRating"));
-            System.out.println(filme.get("rank"));
-            System.out.println();
+            double classificação = Double.parseDouble(filme.get("imDbRating"));
+            int numeroEstrlinhas = (int) classificação;
+
+            for (int n = 1; n <= numeroEstrlinhas; n++) {
+                System.out.print("⭐");
+
+            }
+            System.out.println("\n");
 
         }
     }
