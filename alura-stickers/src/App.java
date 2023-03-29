@@ -28,7 +28,6 @@ public class App {
             System.out.println(filme.get("imDbRating"));
             System.out.println(filme.get("rank"));
             System.out.println();
-            System.out.println();
 
         }
     }
