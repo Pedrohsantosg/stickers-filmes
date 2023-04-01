@@ -23,6 +23,7 @@ public class GeradoraDeFigurinhas {
     graphics.drawImage(imagemOriginal, 0, 0, null);
 
     // escrever uma frase na imagem
+    System.out.println();
 
     // escrever a nova imagem em um arquivo
     ImageIO.write(novaImagem, "png", new File("saida/figurinha.png"));
